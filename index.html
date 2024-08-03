@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CARTA ACERTIJO YANISHITA</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #e3e2df; /* Color crema */
+            color: #333;
+            margin: 0;
+            padding: 0;
+            overflow: hidden; /* Evita el desplazamiento durante la carga */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .preload {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background-color: #e3e2df; /* Color crema */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            z-index: 9999;
+        }
+        .preload h1 {
+            color: #00b5c5; /* Azul mar caribeño */
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            font-size: calc(1.5em + 1vw); /* Tamaño de fuente adaptable */
+        }
+        .progress-bar {
+            width: 80%;
+            max-width: 600px;
+            height: 20px;
+            background-color: #f3f3f3;
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid #00b5c5; /* Azul mar caribeño */
+        }
+        .progress {
+            height: 100%;
+            background-color: #00b5c5; /* Azul mar caribeño */
+            width: 0;
+        }
+        .container {
+            display: none;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-image:url("/girasoles-generados-ai.jpg") ; /* Imagen de fondo */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        .content {
+            background-color: rgba(255, 255, 255, 0.8); /* Fondo blanco semitransparente */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            max-width: 90%;
+            text-align: center;
+        }
+        .card {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 90%;
+            padding: 20px;
+            border: 1px solid #00b5c5; /* Azul mar caribeño */
+            margin: 20px auto;
+            text-align: center;
+            display: none; /* Inicialmente oculto */
+        }
+        h1 {
+            color: #00b5c5; /* Azul mar caribeño */
+            font-size: 1.5em;
+        }
+        p {
+            font-size: 1em;
+            line-height: 1.6;
+            color: #333;
+        }
+        .signature {
+            margin-top: 20px;
+            font-style: italic;
+            color: #007d99; /* Un tono más oscuro de azul mar caribeño */
+        }
+        .riddle, .input-container {
+            margin-bottom: 20px;
+        }
+        .riddle p {
+            color: #007d99; /* Un tono más oscuro de azul mar caribeño */
+        }
+        input[type="text"] {
+            padding: 10px;
+            border: 2px solid #00b5c5;
+            border-radius: 5px;
+            width: calc(100% - 24px);
+            max-width: 300px;
+            margin-bottom: 10px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #00b5c5;
+            border: none;
+            border-radius: 5px;
+            color: #fff;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #720972;
+        }
+        .image-decorative {
+            width: 80px;
+            margin-bottom: 20px;
+        }
+        @media (max-width: 768px) {
+            .preload h1 {
+                font-size: 1.2em;
+            }
+            .progress-bar {
+                width: 90%;
+            }
+            .content {
+                padding: 15px;
+                max-width: 95%;
+            }
+            .card {
+                max-width: 95%;
+                padding: 15px;
+            }
+            input[type="text"] {
+                max-width: 90%;
+            }
+        }
+    </style>
+    <script>
+        function checkAnswer() {
+            const answer = document.getElementById('answer').value.toLowerCase().trim();
+            if (answer === 'pumalaquita' || answer === 'pumalaca') {
+                document.querySelector('.card').style.display = 'block';
+                document.querySelector('.input-container').style.display = 'none';
+                document.querySelector('.riddle').style.display = 'none';
+            } else {
+                alert('Respuesta incorrecta, intenta de nuevo.');
+            }
+        }
+
+        function hidePreload() {
+            document.querySelector('.preload').style.display = 'none';
+            document.querySelector('.container').style.display = 'flex';
+        }
+
+        function updateProgress() {
+            const progress = document.querySelector('.progress');
+            let width = 0;
+            const interval = setInterval(() => {
+                if (width >= 100) {
+                    clearInterval(interval);
+                    hidePreload();
+                } else {
+                    width++;
+                    progress.style.width = width + '%';
+                }
+            }, 60); // Duración total de 6000 ms (6 segundos)
+        }
+
+        window.onload = function() {
+            updateProgress();
+        };
+    </script>
+</head>
+<body>
+    <div class="preload">
+        <h1>❤Esta carta es para ti❤</h1>
+        <H1>MI YANISHITA</H1>
+        <div class="progress-bar">
+            <div class="progress"></div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="content">
+            <div class="riddle">
+                <p>Para revelar la carta, responde a este acertijo:</p>
+                <p><strong>"Yani, ¿cuál es la frutita que tiene una anécdota que nos une?"</strong></p>
+            </div>
+            <div class="input-container">
+                <input type="text" id="answer" placeholder="Ingresa tu respuesta">
+                <button onclick="checkAnswer()">Enviar</button>
+            </div>
+            <div class="card">
+                
+                <h1>✨PARA LA NIÑA MAS BONITA DE TODA LA EXISTENCIA✨</h1>
+                <p>
+                    Yani, te quiero incondicionalmente. Te lo digo mil y una veces: quiero que sepas que estoy para ti hoy, mañana y siempre. Me has dejado cada anécdota, eres mi cable a tierra y quiero todo contigo. Por eso te veo en todos lados y lucho día a día buscando una opción que una nuestro hilo en todo sentido, sea para que me dejes en la friendzone o no. Tu presencia sería para mí lo más preciado. Mi Yanishita, tu paz es mi paz. Cierro diciendo: te adoro con toda el alma.
+                </p>
+                <p class="signature">
+                    Atentamente, <br>
+                    Sapo Perro 😊❤
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
